@@ -9,10 +9,29 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["onStartupFinished"]
-  ,
+  "activationEvents": [
+    "onLanguage:*",
+    "onCommand:extension.generateCode"
+  ],
   "main": "./out/extension.js",
   "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Code Generation Extension",
+      "properties": {
+        "extension.recentEditWindow": {
+          "type": "number",
+          "default": 10,
+          "description": "최근 편집된 코드를 고려할 시간 창 (초)"
+        },
+        "extension.contextLines": {
+          "type": "number",
+          "default": 2,
+          "description": "변경사항 전후로 포함할 문맥 줄 수"
+        }
+      }
+    },
+    
     "commands": [
       {
         "command": "extension.generateCode",
